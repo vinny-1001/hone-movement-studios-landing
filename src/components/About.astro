@@ -1,22 +1,27 @@
 ---
+import { Image } from "astro:assets";
+import aboutImg from "../assets/about.jpg";
 ---
 <section class="bg-[var(--light-grey)] py-16 md:py-24">
   <div class="max-w-[1000px] mx-auto px-4 md:px-6 lg:px-12">
     <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-      <div
-        class="aspect-[4/3] bg-[var(--dark-charcoal)] rounded-lg flex items-center justify-center text-white/40 text-sm"
-        role="img"
-        aria-label="Wide shot of the Victorian warehouse interior at Pixley Street"
-      >
-        [studio photo placeholder]
-      </div>
+      <Image
+        src={aboutImg}
+        alt="Circle window looking into Studio 49 — the converted Victorian warehouse on Pixley Street"
+        widths={[480, 768, 1024]}
+        sizes="(min-width: 768px) 50vw, 100vw"
+        format="webp"
+        quality={75}
+        loading="lazy"
+        class="w-full aspect-[4/3] object-cover rounded-lg"
+      />
       <div>
-        <h2 class="text-3xl md:text-4xl font-bold text-[var(--dark-charcoal)] mb-4">The space</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--dark-charcoal)] mb-4">Who we are</h2>
         <p class="text-base md:text-lg text-[var(--dark-charcoal)] mb-4">
-          A converted Victorian warehouse on Pixley Street, beside the Limehouse Cut. Two self-serve studios with sprung floors, full-height mirrors, and natural light.
+          Hone Movement Studios is two light-filled studios in a warehouse in Limehouse — built for the people who live to move. Dancers, teachers, choreographers, theatre-makers, yogis, somatic practitioners, photographers. If you're here to create something, this is your room.
         </p>
         <p class="text-base md:text-lg text-[var(--dark-charcoal)]">
-          Part of the wider Hone maker and creative community in East London. Affordable, professional, available 6am to midnight.
+          Part of the HONE family of brands, but Movement is its own thing — its own people, its own energy. You book, you turn up, you get to work. We love what happens when the door closes and the music starts.
         </p>
       </div>
     </div>

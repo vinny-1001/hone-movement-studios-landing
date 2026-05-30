@@ -22,11 +22,24 @@ Connect this repo in the Cloudflare Pages dashboard:
 
 Set these environment variables in the Pages project:
 
-- `DESTINATION_EMAIL` — where to send inquiries
-- `FROM_EMAIL` — sender address on a domain with MailChannels DNS records
+| Var | Required | What |
+|-----|----------|------|
+| `BREVO_API_KEY` | ✅ | API key from https://app.brevo.com/settings/keys/api |
+| `BREVO_LIST_ID` | recommended | Numeric ID of the Brevo list to add contacts to |
+| `BREVO_SENDER_EMAIL` | optional | If set, also sends an instant notification email |
+| `NOTIFY_EMAIL` | optional | Inbox for the instant notification |
 
-See [Cloudflare MailChannels setup](https://developers.cloudflare.com/pages/functions/plugins/mailchannels/)
-for the required SPF / DKIM / `_mailchannels` TXT records.
+The form POSTs to `/api/inquiry` (Cloudflare Pages Function) which creates a
+contact in Brevo with custom attributes:
+
+- `FIRSTNAME` · `STUDIO` · `WHEN_NEEDED` · `SOURCE = "landing-page"`
+- `WHATSAPP` + `SMS` if the user submitted a phone number instead of email
+
+If the user gave a WhatsApp number, a synthetic email
+(`wa-<digits>@inquiry.hone.london`) is used so Brevo can store the contact.
+Set up the `WHATSAPP`, `WHEN_NEEDED`, `STUDIO`, `SOURCE` custom contact
+attributes in Brevo → Contacts → Settings → Contact attributes before
+going live.
 
 If you prefer CLI deploys, install wrangler globally (`npm i -g wrangler`)
 and run `wrangler pages deploy dist` after `npm run build`. (Wrangler is

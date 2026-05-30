@@ -92,12 +92,20 @@ Section vertical padding: mobile 48px, desktop 96px.
 
 ---
 
-## Voice
+## Voice (v6 brand guidelines)
 
-- Direct, precise, no filler. Short sentences. British English.
-- No exclamation marks. Forbidden words: journey, wellness, transformation,
-  stunning, amazing, incredible, curated, experience.
-- Name specifics: the floor, the mirrors, the barre, the skylights.
+Tone: **warm, joyful, real, direct, personal**. Talks like a human who loves
+the work and would love to share the room with you. British English.
+
+- USE: practice, rehearsal, work, play, light-filled, sprung floor, big mirrors,
+  lovely room, welcome, open, here for you, from £13/hr, self-serve booking,
+  private studio, Limehouse, East London, our corner of E14.
+- AVOID: journey, wellness, transformation, immersive, curated, experience,
+  stunning, magical, breathtaking, vibrant community, hidden gem, tribe,
+  wellness warriors, affordable luxury, elevated practice, premium members.
+- Contractions are good. "We" and "you". Sound like a person wrote it.
+- Exclamation marks only when you really mean it (rare).
+- Strapline: **"A space for the work you love."**
 - Prices in £.
 
 ---

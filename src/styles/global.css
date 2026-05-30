@@ -96,6 +96,11 @@ body {
   }
 }
 
+/* Warm filter — nudge cool / grey photos toward the same tone as the warmer shots */
+.warm-tint {
+  filter: sepia(0.18) saturate(1.15) hue-rotate(-8deg) brightness(1.03);
+}
+
 /* No horizontal scroll */
 html, body {
   overflow-x: hidden;

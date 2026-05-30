@@ -1,29 +1,49 @@
 ---
+import { Image } from "astro:assets";
+import s28Img from "../assets/studio-28.jpg";
+import s49Img from "../assets/studio-49.png";
+
 const studios = [
   {
     id: "Studio 28",
+    tagline: "The everyday favourite",
+    bookUrl:
+      "https://honelondon.skedda.com/booking?spacetagids=ad245ac06d2046b096c7b8fe684de36b",
     bg: "var(--brand-blue)",
+    img: s28Img,
+    imgClass: "",
+    alt: "Dance class in progress in Studio 28 — sprung floor and full-height mirrors",
     features: [
       "Sprung floor",
       "Full-height mirrors",
-      "Natural skylights",
+      "Beautiful natural light",
       "Photographic backdrop",
-      "Music system",
+      "Full professional music system",
+      "Table and chairs",
+      "Shared kitchen and bathroom",
     ],
-    size: "3.5 × 8m · Up to 20 people",
+    size: "Affordable, well-equipped, ready when you are",
     price: "From £13/hr",
   },
   {
     id: "Studio 49",
+    tagline: "The big one — our flagship",
+    bookUrl:
+      "https://honelondon.skedda.com/booking?spacetagids=9bc1fd5d4ecf431ba9b05c67ca5d6c6f",
     bg: "var(--dark-charcoal)",
+    img: s49Img,
+    imgClass: "warm-tint",
+    alt: "Studio 49 — empty studio looking back, full-height mirrors and arched warehouse windows",
     features: [
-      "Arched warehouse windows",
+      "Fully private — exclusive hire available",
+      "Sprung floor & full-height mirrors",
       "Ballet barre",
-      "Private dressing room",
-      "Kitchen",
-      "Blackout curtains",
+      "Dressing and make-up room",
+      "Private shower & kitchen",
+      "Dimmable lighting + basic rig",
+      "High-speed Wi-Fi & whiteboard",
     ],
-    size: "7 × 7m · Full class capacity",
+    size: "Private space for shoots, workshops and events",
     price: "From £24/hr",
   },
 ];
@@ -31,17 +51,29 @@ const studios = [
 <section class="bg-white py-16 md:py-24">
   <div class="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-12">
     <div class="reveal text-center mb-12">
-      <h2 class="text-3xl md:text-5xl font-bold text-[var(--dark-charcoal)] mb-3">Two studios. One building.</h2>
-      <p class="text-lg text-[var(--dark-charcoal)]/75">Converted Victorian warehouse on Pixley Street.</p>
+      <h2 class="text-3xl md:text-5xl font-bold text-[var(--dark-charcoal)] mb-3">Two studios. Two vibes. One standard of care.</h2>
+      <p class="text-lg text-[var(--dark-charcoal)]/75">A warehouse in Limehouse, open 6am to 11pm, seven days a week.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
       {studios.map((s) => (
         <article
-          class="lift rounded-lg p-8 md:p-10 text-white flex flex-col"
+          class="lift rounded-lg overflow-hidden text-white flex flex-col"
           style={`background-color: ${s.bg};`}
         >
-          <h3 class="text-3xl md:text-4xl font-bold mb-2">{s.id}</h3>
-          <p class="text-white/80 text-sm mb-6">{s.size}</p>
+          <Image
+            src={s.img}
+            alt={s.alt}
+            widths={[480, 768, 1024]}
+            sizes="(min-width: 768px) 50vw, 100vw"
+            format="webp"
+            quality={75}
+            loading="lazy"
+            class={`w-full aspect-[4/3] object-cover ${s.imgClass}`}
+          />
+          <div class="p-8 md:p-10 flex flex-col flex-grow">
+          <h3 class="text-3xl md:text-4xl font-bold mb-1">{s.id}</h3>
+          <p class="text-white/90 text-base font-semibold mb-1">{s.tagline}</p>
+          <p class="text-white/70 text-sm mb-6">{s.size}</p>
           <ul class="space-y-3 mb-8 flex-grow">
             {s.features.map((f) => (
               <li class="flex items-start gap-3">
@@ -54,12 +86,21 @@ const studios = [
           </ul>
           <p class="text-2xl font-bold mb-6">{s.price}</p>
           <a
+            href={s.bookUrl}
+            target="_blank"
+            rel="noopener"
+            class="press inline-block bg-white text-[var(--brand-blue)] font-bold px-6 py-3 rounded-md text-center min-h-[48px] hover:bg-white/95 transition-colors"
+          >
+            Book {s.id} →
+          </a>
+          <a
             href="#inquiry"
             data-studio-anchor={s.id}
-            class="press inline-block bg-white text-[var(--brand-blue)] font-bold px-6 py-3 rounded-md text-center min-h-[44px] hover:bg-white/95 transition-colors"
+            class="mt-3 inline-block text-center text-sm text-white/80 underline underline-offset-4 hover:no-underline"
           >
-            Inquire about {s.id} →
+            Or send an inquiry
           </a>
+          </div>
         </article>
       ))}
     </div>
