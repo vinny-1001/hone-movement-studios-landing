@@ -1,4 +1,5 @@
 ---
+const today = new Date().toISOString().slice(0, 10);
 ---
 <section id="inquiry" class="bg-[var(--brand-blue)] text-white py-16 md:py-24 scroll-mt-4">
   <div class="max-w-[640px] mx-auto px-4 md:px-6">
@@ -66,11 +67,14 @@
           <input
             id="when"
             name="when"
-            type="text"
+            type="date"
             required
-            placeholder="e.g. Tuesday evenings, this Saturday"
-            class="w-full bg-white text-[var(--dark-charcoal)] px-4 py-3 rounded-md min-h-[48px] border-2 border-transparent focus:border-white outline-none placeholder:text-[var(--dark-charcoal)]/50"
+            min={today}
+            class="w-full bg-white text-[var(--dark-charcoal)] px-4 py-3 rounded-md min-h-[48px] border-2 border-transparent focus:border-white outline-none"
           />
+          <p class="mt-2 text-xs text-white/70">
+            Need a recurring slot or not sure yet? Just pick a rough date — we'll work it out together.
+          </p>
         </div>
 
         <label class="flex items-start gap-3 cursor-pointer select-none">
