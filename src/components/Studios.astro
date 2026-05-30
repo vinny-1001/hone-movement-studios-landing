@@ -1,0 +1,67 @@
+---
+const studios = [
+  {
+    id: "Studio 28",
+    bg: "var(--brand-blue)",
+    features: [
+      "Sprung floor",
+      "Full-height mirrors",
+      "Natural skylights",
+      "Photographic backdrop",
+      "Music system",
+    ],
+    size: "3.5 × 8m · Up to 20 people",
+    price: "From £13/hr",
+  },
+  {
+    id: "Studio 49",
+    bg: "var(--dark-charcoal)",
+    features: [
+      "Arched warehouse windows",
+      "Ballet barre",
+      "Private dressing room",
+      "Kitchen",
+      "Blackout curtains",
+    ],
+    size: "7 × 7m · Full class capacity",
+    price: "From £24/hr",
+  },
+];
+---
+<section class="bg-white py-16 md:py-24">
+  <div class="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-12">
+    <div class="reveal text-center mb-12">
+      <h2 class="text-3xl md:text-5xl font-bold text-[var(--dark-charcoal)] mb-3">Two studios. One building.</h2>
+      <p class="text-lg text-[var(--dark-charcoal)]/75">Converted Victorian warehouse on Pixley Street.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      {studios.map((s) => (
+        <article
+          class="lift rounded-lg p-8 md:p-10 text-white flex flex-col"
+          style={`background-color: ${s.bg};`}
+        >
+          <h3 class="text-3xl md:text-4xl font-bold mb-2">{s.id}</h3>
+          <p class="text-white/80 text-sm mb-6">{s.size}</p>
+          <ul class="space-y-3 mb-8 flex-grow">
+            {s.features.map((f) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 mt-0.5 flex-shrink-0 text-white/90" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4L8.5 12l6.8-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/>
+                </svg>
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="text-2xl font-bold mb-6">{s.price}</p>
+          <a
+            href="#inquiry"
+            data-studio-anchor={s.id}
+            class="press inline-block bg-white text-[var(--brand-blue)] font-bold px-6 py-3 rounded-md text-center min-h-[44px] hover:bg-white/95 transition-colors"
+          >
+            Inquire about {s.id} →
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

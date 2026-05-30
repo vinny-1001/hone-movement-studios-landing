@@ -1,0 +1,42 @@
+---
+const rows = [
+  ["Off-peak", "£13/hr", "£24/hr"],
+  ["Standard", "£15/hr", "£26/hr"],
+  ["Peak", "£18/hr", "£31/hr"],
+  ["Weekends", "£18/hr", "£31/hr"],
+];
+---
+<section class="bg-[var(--light-grey)] py-16 md:py-24">
+  <div class="max-w-[1000px] mx-auto px-4 md:px-6 lg:px-12">
+    <div class="reveal text-center mb-10">
+      <h2 class="text-3xl md:text-5xl font-bold text-[var(--dark-charcoal)] mb-3">Pricing</h2>
+      <p class="text-lg text-[var(--dark-charcoal)]/75">Simple, hourly, no membership.</p>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left bg-white rounded-lg overflow-hidden">
+        <thead class="bg-[var(--dark-charcoal)] text-white">
+          <tr>
+            <th scope="col" class="px-4 md:px-6 py-4 text-base font-bold">Time</th>
+            <th scope="col" class="px-4 md:px-6 py-4 text-base font-bold">Studio 28</th>
+            <th scope="col" class="px-4 md:px-6 py-4 text-base font-bold">Studio 49</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(([label, s28, s49]) => (
+            <tr class="border-t border-[var(--dark-charcoal)]/10">
+              <th scope="row" class="px-4 md:px-6 py-4 font-semibold text-[var(--dark-charcoal)]">{label}</th>
+              <td class="px-4 md:px-6 py-4 tabular-nums text-[var(--dark-charcoal)]">{s28}</td>
+              <td class="px-4 md:px-6 py-4 tabular-nums text-[var(--dark-charcoal)]">{s49}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-6 text-sm text-center text-[var(--dark-charcoal)]/75">
+      Off-peak: 6am–noon · Standard: noon–6pm · Peak: 6pm–midnight
+    </p>
+    <p class="mt-1 text-sm text-center text-[var(--dark-charcoal)]/75">
+      2-hour minimum booking.
+    </p>
+  </div>
+</section>

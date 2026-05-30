@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-blue: #004369;
+  --color-dark-charcoal: #44414F;
+  --color-light-grey: #EEEDED;
+  --color-white: #FFFFFF;
+  --color-focus-ring: #4DA3D9;
+
+  --font-sans: "Gill Sans MT", "Gill Sans", Calibri, "Trebuchet MS", sans-serif;
+}
+
+:root {
+  --brand-blue: #004369;
+  --dark-charcoal: #44414F;
+  --light-grey: #EEEDED;
+  --white: #FFFFFF;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.6;
+  color: var(--dark-charcoal);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Focus rings */
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  background: var(--brand-blue);
+  color: var(--white);
+  text-decoration: none;
+}
+.skip-link:focus {
+  left: 0.5rem;
+  top: 0.5rem;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover lift (desktop only) */
+@media (hover: hover) and (pointer: fine) {
+  .lift {
+    transition: transform 150ms ease-out;
+  }
+  .lift:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Press feedback */
+.press:active {
+  transform: scale(0.98);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* No horizontal scroll */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}

@@ -1,0 +1,39 @@
+---
+const testimonials = [
+  {
+    quote: "Easy to book, easy to access, spacious, lots of great light.",
+    name: "Sally B",
+    role: "Dancer",
+  },
+  {
+    quote: "Used Studio 49 for an audition. The barre, the light, the floor — all spot on.",
+    name: "Marcus T",
+    role: "Choreographer",
+  },
+  {
+    quote: "Best value rehearsal space east of the City. We're back every week.",
+    name: "Anya R",
+    role: "Dance teacher",
+  },
+];
+---
+<section class="bg-[var(--dark-charcoal)] text-white py-16 md:py-24">
+  <div class="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-12">
+    <div class="reveal text-center mb-12">
+      <h2 class="text-3xl md:text-5xl font-bold mb-3">What practitioners say</h2>
+    </div>
+    <ul class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 snap-x snap-mandatory overflow-x-auto md:overflow-visible">
+      {testimonials.map((t) => (
+        <li class="bg-white/5 border border-white/10 rounded-lg p-6 md:p-8 snap-center min-w-[85%] md:min-w-0">
+          <div class="flex gap-1 mb-4 text-white" aria-label="5 star rating">
+            {[...Array(5)].map(() => (
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1l2.6 5.9 6.4.6-4.9 4.4 1.5 6.3L10 15l-5.6 3.2 1.5-6.3L1 7.5l6.4-.6L10 1z"/></svg>
+            ))}
+          </div>
+          <blockquote class="text-lg leading-relaxed mb-6">"{t.quote}"</blockquote>
+          <p class="text-sm text-white/70">— {t.name}, {t.role}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
