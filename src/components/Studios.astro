@@ -1,14 +1,16 @@
 ---
 import { Image } from "astro:assets";
+import Wave from "./Wave.astro";
 import s28Img from "../assets/studio-28.jpg";
 import s49Img from "../assets/studio-49.png";
+
+const BOOK_URL = "https://calendar.honemovementstudios.com/book";
 
 const studios = [
   {
     id: "Studio 28",
     tagline: "The everyday favourite",
-    bookUrl:
-      "https://honelondon.skedda.com/booking?spacetagids=ad245ac06d2046b096c7b8fe684de36b",
+    bookUrl: BOOK_URL + "?studio=28",
     bg: "var(--brand-blue)",
     img: s28Img,
     imgClass: "",
@@ -28,9 +30,8 @@ const studios = [
   {
     id: "Studio 49",
     tagline: "The big one — our flagship",
-    bookUrl:
-      "https://honelondon.skedda.com/booking?spacetagids=9bc1fd5d4ecf431ba9b05c67ca5d6c6f",
-    bg: "var(--dark-charcoal)",
+    bookUrl: BOOK_URL + "?studio=49",
+    bg: "var(--deep-slate)",
     img: s49Img,
     imgClass: "warm-tint",
     alt: "Studio 49 — empty studio looking back, full-height mirrors and arched warehouse windows",
@@ -48,16 +49,18 @@ const studios = [
   },
 ];
 ---
-<section class="bg-white py-16 md:py-24">
+<section class="bg-[var(--cream)] py-16 md:py-24">
   <div class="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-12">
     <div class="reveal text-center mb-12">
-      <h2 class="text-3xl md:text-5xl font-bold text-[var(--dark-charcoal)] mb-3">Two studios. Two vibes. One standard of care.</h2>
-      <p class="text-lg text-[var(--dark-charcoal)]/75">A warehouse in Limehouse, open 6am to 11pm, seven days a week.</p>
+      <p class="eyebrow mb-3">Two studios</p>
+      <h2 class="text-3xl md:text-5xl font-medium text-[var(--brand-blue)] mb-4 leading-tight">Two studios. Two vibes.<br class="hidden md:block" /> One standard of care.</h2>
+      <p class="text-lg text-[var(--dark-charcoal)]/80 max-w-2xl mx-auto">A warehouse in Limehouse, open 6am&nbsp;to&nbsp;11pm, seven days a week.</p>
+      <div class="flex justify-center mt-6"><Wave width={180} variant="accent" /></div>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
       {studios.map((s) => (
         <article
-          class="lift rounded-lg overflow-hidden text-white flex flex-col"
+          class="lift rounded-xl overflow-hidden text-white flex flex-col"
           style={`background-color: ${s.bg};`}
         >
           <Image
@@ -71,35 +74,35 @@ const studios = [
             class={`w-full aspect-[4/3] object-cover ${s.imgClass}`}
           />
           <div class="p-8 md:p-10 flex flex-col flex-grow">
-          <h3 class="text-3xl md:text-4xl font-bold mb-1">{s.id}</h3>
-          <p class="text-white/90 text-base font-semibold mb-1">{s.tagline}</p>
-          <p class="text-white/70 text-sm mb-6">{s.size}</p>
-          <ul class="space-y-3 mb-8 flex-grow">
-            {s.features.map((f) => (
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 mt-0.5 flex-shrink-0 text-white/90" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4L8.5 12l6.8-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/>
-                </svg>
-                <span>{f}</span>
-              </li>
-            ))}
-          </ul>
-          <p class="text-2xl font-bold mb-6">{s.price}</p>
-          <a
-            href={s.bookUrl}
-            target="_blank"
-            rel="noopener"
-            class="press inline-block bg-white text-[var(--brand-blue)] font-bold px-6 py-3 rounded-md text-center min-h-[48px] hover:bg-white/95 transition-colors"
-          >
-            Book {s.id} →
-          </a>
-          <a
-            href="#inquiry"
-            data-studio-anchor={s.id}
-            class="mt-3 inline-block text-center text-sm text-white/80 underline underline-offset-4 hover:no-underline"
-          >
-            Or send an inquiry
-          </a>
+            <h3 class="text-3xl md:text-4xl font-medium mb-1">{s.id}</h3>
+            <p class="text-[var(--yellow)] text-base font-medium mb-1">{s.tagline}</p>
+            <p class="text-white/70 text-sm mb-6">{s.size}</p>
+            <ul class="space-y-3 mb-8 flex-grow">
+              {s.features.map((f) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 mt-0.5 flex-shrink-0 text-[var(--yellow)]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M16.7 5.3a1 1 0 010 1.4l-7.5 7.5a1 1 0 01-1.4 0L3.3 9.7a1 1 0 011.4-1.4L8.5 12l6.8-6.7a1 1 0 011.4 0z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-white/95">{f}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="text-2xl font-medium mb-6">{s.price}</p>
+            <a
+              href={s.bookUrl}
+              target="_blank"
+              rel="noopener"
+              class="press inline-block bg-[var(--yellow)] text-[var(--dark-charcoal)] font-medium px-6 py-3 rounded-full text-center min-h-[48px] hover:brightness-95 transition"
+            >
+              Book {s.id} →
+            </a>
+            <a
+              href="#inquiry"
+              data-studio-anchor={s.id}
+              class="mt-3 inline-block text-center text-sm text-white/80 underline underline-offset-4 hover:no-underline"
+            >
+              Or send an inquiry
+            </a>
           </div>
         </article>
       ))}

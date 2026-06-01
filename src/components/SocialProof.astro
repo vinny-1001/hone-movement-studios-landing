@@ -5,13 +5,13 @@ const quotes = [
   { quote: "Easy booking, brilliant floor — we keep coming back.", role: "Dance teacher" },
 ];
 ---
-<section class="bg-[var(--light-grey)] py-8 md:py-10">
+<section class="bg-[var(--cream)] py-10 md:py-12 border-y border-[var(--deep-slate)]/15">
   <div class="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-12">
     <ul class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 text-center md:text-left">
       {quotes.map((q) => (
         <li class="text-[var(--dark-charcoal)]">
-          <p class="text-base md:text-lg">
-            <span class="font-semibold">"{q.quote}"</span>
+          <p class="text-base md:text-lg leading-relaxed">
+            <span class="text-[var(--brand-blue)] font-medium">&ldquo;{q.quote}&rdquo;</span>
             <span class="block md:inline text-sm text-[var(--dark-charcoal)]/70 mt-1 md:mt-0 md:ml-2">— {q.role}</span>
           </p>
         </li>

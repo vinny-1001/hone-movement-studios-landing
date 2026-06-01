@@ -17,20 +17,21 @@ const testimonials = [
   },
 ];
 ---
-<section class="bg-[var(--dark-charcoal)] text-white py-16 md:py-24">
+<section class="bg-[var(--deep-slate)] text-[var(--cream)] py-16 md:py-24">
   <div class="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-12">
     <div class="reveal text-center mb-12">
-      <h2 class="text-3xl md:text-5xl font-bold mb-3">From the people who use the room</h2>
+      <p class="eyebrow mb-3" style="color: var(--yellow);">In their words</p>
+      <h2 class="text-3xl md:text-5xl font-medium mb-3 text-[var(--cream)]">From the people who use the room</h2>
     </div>
     <ul class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 snap-x snap-mandatory overflow-x-auto md:overflow-visible">
       {testimonials.map((t) => (
-        <li class="bg-white/5 border border-white/10 rounded-lg p-6 md:p-8 snap-center min-w-[85%] md:min-w-0">
-          <div class="flex gap-1 mb-4 text-white" aria-label="5 star rating">
+        <li class="bg-white/5 border border-white/10 rounded-xl p-6 md:p-8 snap-center min-w-[85%] md:min-w-0">
+          <div class="flex gap-1 mb-4 text-[var(--yellow)]" aria-label="5 star rating">
             {[...Array(5)].map(() => (
               <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1l2.6 5.9 6.4.6-4.9 4.4 1.5 6.3L10 15l-5.6 3.2 1.5-6.3L1 7.5l6.4-.6L10 1z"/></svg>
             ))}
           </div>
-          <blockquote class="text-lg leading-relaxed mb-6">"{t.quote}"</blockquote>
+          <blockquote class="text-lg leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</blockquote>
           <p class="text-sm text-white/70">— {t.name}, {t.role}</p>
         </li>
       ))}
