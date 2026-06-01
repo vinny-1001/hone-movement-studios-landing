@@ -1,51 +1,69 @@
 ---
 import { Image } from "astro:assets";
+import Wave from "./Wave.astro";
 import heroImg from "../assets/hero-s49.png";
 ---
-<section class="relative bg-[var(--brand-blue)] text-white overflow-hidden">
-  <Image
-    src={heroImg}
-    alt="Studio 49 — Victorian warehouse interior with arched windows and sprung floor"
-    widths={[640, 960, 1280, 1600]}
-    sizes="100vw"
-    format="webp"
-    quality={75}
-    loading="eager"
-    fetchpriority="high"
-    class="absolute inset-0 w-full h-full object-cover opacity-40"
-  />
-  <div class="absolute inset-0 bg-gradient-to-b from-[var(--brand-blue)]/60 via-[var(--brand-blue)]/70 to-[var(--brand-blue)]/90 pointer-events-none" aria-hidden="true"></div>
-  <div class="relative max-w-[1200px] mx-auto px-4 md:px-6 lg:px-12 py-16 md:py-24 lg:py-32 text-center">
-    <p class="uppercase tracking-widest text-sm md:text-base text-white/70 mb-6">Hone Movement Studios · Limehouse, E14</p>
-    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+
+<section class="relative overflow-hidden bg-[var(--cream)]">
+  <div class="relative mx-auto max-w-[1200px] px-4 py-16 md:px-6 md:py-24 lg:px-12 lg:py-28 text-center">
+    <p class="uppercase tracking-[var(--tracking-wider)] text-sm text-[var(--dark-charcoal)]/70 mb-4">
+      Hone Movement Studios · Limehouse, E14
+    </p>
+
+    <h1 class="text-4xl md:text-6xl lg:text-7xl font-normal leading-tight mb-3 text-[var(--brand-blue)]">
       A space for the work you love.
     </h1>
-    <p class="text-lg md:text-xl text-white/85 max-w-2xl mx-auto mb-10">
+
+    <div class="flex justify-center mb-8">
+      <Wave width={320} variant="accent" />
+    </div>
+
+    <p class="text-lg md:text-xl text-[var(--dark-charcoal)] max-w-2xl mx-auto mb-10">
       Two light-filled studios in Limehouse, East London. From £13/hr. Open 6am to 11pm, seven days a week.
     </p>
-    <a
-      href="https://honelondon.skedda.com/booking"
-      target="_blank"
-      rel="noopener"
-      class="press inline-block bg-white text-[var(--brand-blue)] font-bold text-lg md:text-xl px-10 py-5 rounded-md hover:bg-white/95 transition-colors min-h-[52px]"
-    >
-      Book Now →
-    </a>
-    <p class="mt-4 text-sm text-white/75">
-      Or <a href="#inquiry" class="underline underline-offset-4 hover:no-underline">send us an inquiry</a>
-    </p>
-    <div class="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/80">
+
+    <div class="flex flex-wrap items-center justify-center gap-3">
+      <a
+        href="https://calendar.honemovementstudios.com/book"
+        class="press inline-flex items-center justify-center rounded-full bg-[var(--brand-blue)] text-[var(--cream)] font-medium text-base md:text-lg px-8 py-3.5 hover:opacity-90 transition-opacity min-h-[48px]"
+      >
+        Book a studio
+      </a>
+      <a
+        href="#inquiry"
+        class="press inline-flex items-center justify-center rounded-md border border-[var(--dark-charcoal)]/30 text-[var(--brand-blue)] font-medium text-base px-7 py-3 hover:bg-[var(--light-grey)] transition-colors min-h-[48px]"
+      >
+        Send an enquiry
+      </a>
+    </div>
+
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[var(--dark-charcoal)]/80">
       <span class="inline-flex items-center gap-1" aria-label="5 star rated">
-        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1l2.6 5.9 6.4.6-4.9 4.4 1.5 6.3L10 15l-5.6 3.2 1.5-6.3L1 7.5l6.4-.6L10 1z"/></svg>
-        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1l2.6 5.9 6.4.6-4.9 4.4 1.5 6.3L10 15l-5.6 3.2 1.5-6.3L1 7.5l6.4-.6L10 1z"/></svg>
-        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1l2.6 5.9 6.4.6-4.9 4.4 1.5 6.3L10 15l-5.6 3.2 1.5-6.3L1 7.5l6.4-.6L10 1z"/></svg>
-        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1l2.6 5.9 6.4.6-4.9 4.4 1.5 6.3L10 15l-5.6 3.2 1.5-6.3L1 7.5l6.4-.6L10 1z"/></svg>
-        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1l2.6 5.9 6.4.6-4.9 4.4 1.5 6.3L10 15l-5.6 3.2 1.5-6.3L1 7.5l6.4-.6L10 1z"/></svg>
+        {[...Array(5)].map(() => (
+          <svg class="w-4 h-4 fill-[var(--yellow)]" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1l2.6 5.9 6.4.6-4.9 4.4 1.5 6.3L10 15l-5.6 3.2 1.5-6.3L1 7.5l6.4-.6L10 1z"/></svg>
+        ))}
       </span>
       <span aria-hidden="true">·</span>
       <span>Limehouse, E14</span>
       <span aria-hidden="true">·</span>
-      <span>6am–11pm · 7 days</span>
+      <span>6am – 11pm · 7 days</span>
+    </div>
+  </div>
+
+  <!-- Hero photo as a card below the headline, not a dark blanket behind it -->
+  <div class="mx-auto max-w-[1200px] px-4 pb-16 md:px-6 lg:px-12">
+    <div class="overflow-hidden rounded-xl">
+      <Image
+        src={heroImg}
+        alt="Studio 49 — Victorian warehouse interior with arched windows and sprung floor"
+        widths={[640, 960, 1280, 1600]}
+        sizes="(min-width: 1200px) 1200px, 100vw"
+        format="webp"
+        quality={80}
+        loading="eager"
+        fetchpriority="high"
+        class="w-full h-auto object-cover"
+      />
     </div>
   </div>
 </section>

@@ -1,0 +1,69 @@
+---
+/**
+ * Brand mark — three phase-shifted sine waves (locked direction).
+ * primary  = all blue, 2.4px
+ * accent   = yellow middle, 1.8px
+ * white    = all white, 2.4px (for dark surfaces)
+ */
+interface Props {
+  width?: number;
+  variant?: "primary" | "accent" | "white";
+  class?: string;
+}
+const { width = 400, variant = "primary", class: className } = Astro.props;
+
+const W = 500;
+const H = 130;
+const startX = 20;
+const endX = 480;
+const length = endX - startX;
+const segments = 100;
+const amplitude = 28;
+const periods = 1.0;
+const spacing = 15;
+const phaseSpread = Math.PI / 4; // tight phase
+
+const centerY = H / 2;
+const ys = [centerY - spacing, centerY, centerY + spacing];
+const phases = [0, phaseSpread / 2, phaseSpread];
+const period = (2 * Math.PI * periods) / length;
+
+function buildPath(yCenter: number, phase: number): string {
+  const pts: string[] = [];
+  for (let i = 0; i <= segments; i++) {
+    const x = startX + (length * i) / segments;
+    const y = yCenter + amplitude * Math.sin(period * (x - startX) + phase);
+    pts.push(`${i === 0 ? "M" : "L"} ${x.toFixed(2)} ${y.toFixed(2)}`);
+  }
+  return pts.join(" ");
+}
+
+const config = {
+  primary: { stroke: 2.4, colours: ["currentColor", "currentColor", "currentColor"], colourBase: "var(--brand-blue)" },
+  accent:  { stroke: 1.8, colours: ["currentColor", "var(--yellow)", "currentColor"], colourBase: "var(--brand-blue)" },
+  white:   { stroke: 2.4, colours: ["#ffffff", "#ffffff", "#ffffff"], colourBase: "#ffffff" },
+} as const;
+
+const cfg = config[variant];
+const height = (width * H) / W;
+---
+
+<svg
+  width={width}
+  height={height}
+  viewBox={`0 0 ${W} ${H}`}
+  fill="none"
+  aria-hidden="true"
+  class={className}
+  style={`color: ${cfg.colourBase}`}
+>
+  {ys.map((y, i) => (
+    <path
+      d={buildPath(y, phases[i])}
+      stroke={cfg.colours[i]}
+      stroke-width={cfg.stroke}
+      stroke-linecap="round"
+      fill="none"
+    />
+  ))}
+</svg>
