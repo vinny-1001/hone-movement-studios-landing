@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  /* Locked brand palette — matches calendar.honemovementstudios.com */
+  /* Locked 5-colour palette — see C:\Users\vince\hone-booking-app\brand\visual-identity.md */
   --color-cream: #f9f5ef;
-  --color-paper: #ffffff;
   --color-brand-blue: #004369;
-  --color-charcoal: #44414f;
-  --color-dark-charcoal: #44414f;
-  --color-deep-slate: #3c3a4b;
   --color-yellow: #e7b841;
-  --color-yellow-soft: #fbeec4;
-  --color-sand: #c39f76;
+  --color-deep-slate: #3c3a4b;
   --color-light-grey: #eeeded;
+
+  /* Utility tokens */
+  --color-paper: #ffffff;
   --color-white: #ffffff;
+  --color-destructive: #b3261e;
+  --color-success: #2f7a4f;
   --color-focus-ring: #004369;
 
   --font-sans: "Gill Sans MT", "Gill Sans", "Seravek", "Trebuchet MS", system-ui, sans-serif;
@@ -20,14 +20,18 @@
 
 :root {
   --brand-blue: #004369;
-  --dark-charcoal: #44414f;
-  --light-grey: #eeeded;
-  --white: #ffffff;
   --cream: #f9f5ef;
   --deep-slate: #3c3a4b;
+  --light-grey: #eeeded;
   --yellow: #e7b841;
-  --yellow-soft: #fbeec4;
+  --paper: #ffffff;
+  --white: #ffffff;
   --tracking-wider: 0.14em;
+
+  /* DEPRECATED aliases — these tokens are removed from the brand kit.
+     Kept here so legacy --dark-charcoal references still render correctly
+     (mapped to deep-slate). Do NOT introduce new usages — use --deep-slate. */
+  --dark-charcoal: #3c3a4b;
 }
 
 html {
@@ -39,7 +43,7 @@ html {
 
 body {
   line-height: 1.55;
-  color: var(--dark-charcoal);
+  color: var(--deep-slate);
   background: var(--cream);
   -webkit-font-smoothing: antialiased;
 }
@@ -111,7 +115,7 @@ body {
   }
 }
 
-/* Warm filter — nudge cool / grey photos toward the same tone as the warmer shots */
+/* Warm filter — nudge cool / grey photos toward the warm palette */
 .warm-tint {
   filter: sepia(0.18) saturate(1.15) hue-rotate(-8deg) brightness(1.03);
 }
@@ -128,6 +132,7 @@ body {
   font-size: 0.75rem;
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
-  color: var(--dark-charcoal);
+  color: var(--deep-slate);
   font-weight: 500;
+  opacity: 0.7;
 }
